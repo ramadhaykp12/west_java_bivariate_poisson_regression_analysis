@@ -3,13 +3,13 @@ library("VGAM")
 
 dataset <- read.csv("5 varx.csv")
 
-# Model Penuh ivariate Poisson regression
+# Model Penuh negatif binomial
 model_penuh <- vglm(cbind(Y1, Y2) ~ X1 + X2 + X3 + X4 + X5, family = negbinomial(), data=dataset)
 summary(model_penuh)
 
 
 # Model sederhana
-model_sederhana <- vglm(cbind(Y1, Y2) ~ X2 + X3 + X4 + X5, family = negbinomial(), data = dataset)
+model_sederhana <- vglm(cbind(Y1, Y2) ~ 1, family = negbinomial(), data = dataset)
 summary(model_sederhana)
 
 # Menghitung Log Likelihood pada model penuh dan model sederhana
